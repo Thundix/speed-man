@@ -33,6 +33,8 @@ function initGame() {
     var canvas = new createjs.Stage("megaManCanvas");
     createjs.Sound.alternateExtensions = ["mp3"];
 
+    resizeToWindow();
+
     var manifest = [
         {id:"spriteSheetMegaman",   src:"./../resources/sprites/megaman/megamanSpriteSheet.png"},
         {id:"primaryBg", src:"./../resources/sprites/primaryBg.png"},
@@ -121,6 +123,19 @@ function initGame() {
     }
 
     function restartGame(){
-        location.reload(false);
+        location.reload(false); // todo that's not really the best way
+    }
+
+    function resizeToWindow() {
+        var canvas = document.getElementById("megaManCanvas");
+
+        function resize() {
+            var widthZoom = window.innerWidth / (canvas.width + canvas.width/50);
+            var heightZoom = window.innerHeight / (canvas.height + canvas.height/50);
+            canvas.style.zoom = widthZoom < heightZoom ? widthZoom : heightZoom;
+        }
+
+        window.onresize = resize;
+        resize();
     }
 }
