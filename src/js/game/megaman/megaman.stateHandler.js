@@ -253,11 +253,6 @@ function MegamanStateHandler(megaman){
             borderYType : RectangularZoneLocator.borderYTypes.TOP
         };
 
-        //if (megaman.getY(cornerTopLeft)<600){
-        //    console.log("stateHandler.treatCollisisons");
-        //    console.log(collisionQueue);
-        //}
-
         needToFall = true;
         //TODO handle multiple collision at the same time
         for(var j =0 ; j < collisionQueue.length; j++) {

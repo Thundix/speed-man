@@ -7,7 +7,8 @@ GameItem.prototype.constructor = GameItem;
 GameItem.ComponentTypes = {
     LOCATOR:"Locator",
     COLLIDER:"Collider",
-    RENDERER:"Renderer"
+    RENDERER:"Renderer",
+    STATE_HANDLER:"StateHandler"
 }
 function GameItem(x,y) {
     if (x != null && y != null ) {
@@ -21,6 +22,7 @@ function GameItem(x,y) {
         gameItem.addLocator = addLocator;
         gameItem.addCollider = addCollider;
         gameItem.addRenderer = addRenderer;
+        gameItem.addStateHandler = addStateHandler;
 
 
         /*compose base gameItem*/
@@ -64,9 +66,13 @@ function GameItem(x,y) {
             componentsForRole.push(renderer);
         }
 
+        function addStateHandler(stateHandler) {
 
+            var componentsForRole = componentRoleHelper.getComponentListForRole(GameItem.ComponentTypes.STATE_HANDLER);
+            componentRoleHelper.generateComponentListGetterForRole(GameItem.ComponentTypes.STATE_HANDLER);
 
-
+            componentsForRole.push(stateHandler);
+        }
 
         function doAGameItemThing() {
             console.log("GameItem do a GameItem thing");

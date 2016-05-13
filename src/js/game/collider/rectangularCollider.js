@@ -274,19 +274,19 @@ function RectangularCollider(gameItem){
         ){
             var params = {
                 newY:secondCollider.getNextY(delta)-gameItem.getHeight(),
-                time:1,
-                "01-gameItem.Left":gameItem.getX(cornerTopLeft),
-                "02-secondCollider.Right":secondCollider.getX(cornerTopLeft) + secondCollider.getWidth(),
-                "03-gameItem.Left<secondCollider.Right":gameItem.getX(cornerTopLeft)  < secondCollider.getX(cornerTopLeft) + secondCollider.getWidth(),
-                "04-gameItem.Right":gameItem.getX(cornerTopLeft)+ gameItem.getWidth(),
-                "05-secondCollider.Left":secondCollider.getX(cornerTopLeft),
-                "06-gameItem.Right>secondCollider.Left":gameItem.getX(cornerTopLeft) + gameItem.getWidth()  > secondCollider.getX(cornerTopLeft),
-                "07-gameItem.Top":gameItem.getY(cornerTopLeft),
-                "08-secondCollider.Bottom":secondCollider.getY(cornerTopLeft) + secondCollider.getHeight(),
-                "09-gameItem.Top<secondCollider.Bottom":gameItem.getY(cornerTopLeft)  < secondCollider.getY(cornerTopLeft) + secondCollider.getHeight(),
-                "10-gameItem.Bottom":gameItem.getY(cornerTopLeft) + gameItem.getHeight(),
-                "11-secondCollider.Top":secondCollider.getY(cornerTopLeft),
-                "12-gameItem.Bottom>secondCollider.Top":gameItem.getY(cornerTopLeft) + gameItem.getHeight() > secondCollider.getY(cornerTopLeft)
+                time:1
+//                "01-gameItem.Left":gameItem.getX(cornerTopLeft),
+//                "02-secondCollider.Right":secondCollider.getX(cornerTopLeft) + secondCollider.getWidth(),
+//                "03-gameItem.Left<secondCollider.Right":gameItem.getX(cornerTopLeft)  < secondCollider.getX(cornerTopLeft) + secondCollider.getWidth(),
+//                "04-gameItem.Right":gameItem.getX(cornerTopLeft)+ gameItem.getWidth(),
+//                "05-secondCollider.Left":secondCollider.getX(cornerTopLeft),
+//                "06-gameItem.Right>secondCollider.Left":gameItem.getX(cornerTopLeft) + gameItem.getWidth()  > secondCollider.getX(cornerTopLeft),
+//                "07-gameItem.Top":gameItem.getY(cornerTopLeft),
+//                "08-secondCollider.Bottom":secondCollider.getY(cornerTopLeft) + secondCollider.getHeight(),
+//                "09-gameItem.Top<secondCollider.Bottom":gameItem.getY(cornerTopLeft)  < secondCollider.getY(cornerTopLeft) + secondCollider.getHeight(),
+//                "10-gameItem.Bottom":gameItem.getY(cornerTopLeft) + gameItem.getHeight(),
+//                "11-secondCollider.Top":secondCollider.getY(cornerTopLeft),
+//                "12-gameItem.Bottom>secondCollider.Top":gameItem.getY(cornerTopLeft) + gameItem.getHeight() > secondCollider.getY(cornerTopLeft)
             };
             return new Collision(collisionType, Collision.directions.INSIDE, params);
         }
