@@ -2,8 +2,8 @@ function Boss1InputGenerator() {
     var handler = this;
     var jump = false;
     var fire = false;
-    var jumpRate=100;
-    var fireRate=200;
+    var jumpRate=BOSS1_JUMP_RATE;
+    var fireRate=BOSS1_FIRE_RATE;
     var tickCountJump=0;
     var tickCountFire=0;
 

@@ -95,15 +95,6 @@ function Boss1Item(x,y,w,h,sheetName,name,stageContext) {
         return y;
     }
 
-    function getDx(delta) {
-        return 0;
-    }
-
-    function getDy(delta) {
-        return 0;
-    }
-
-
     /*internal class*/
     function Boss1Renderer(x, y, w, h, sheetName, boss) {
 
@@ -291,7 +282,7 @@ function Boss1Item(x,y,w,h,sheetName,name,stageContext) {
 
                 enterState: function () {
                     currentState = states.JUMPING;
-                    boss1.setDy(-2200)
+                    boss1.setDy(BOSS1_JUMP_IMPULSE)
 
                 },
 

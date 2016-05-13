@@ -102,29 +102,6 @@ function RectangularCollider(gameItem){
             }
         }
 
-//        if(collisions.up && collisions.down ){
-//            if(collisions.right){
-//                return collisions.right ;
-//            }
-//            if(collisions.left){
-//                return collisions.left ;
-//            }
-//        }
-//
-//        if(collisions.right && collisions.left ){
-//            if(collisions.up){
-//                return collisions.up ;
-//            }
-//            if(collisions.down){
-//                return collisions.down ;
-//            }
-//        }
-//
-//        if(collisions.down) return collisions.down;
-//        if(collisions.right) return collisions.right;
-//        if(collisions.left) return collisions.left;
-//        if(collisions.up) return collisions.up;
-
         return collisions[minKey];
     }
 
