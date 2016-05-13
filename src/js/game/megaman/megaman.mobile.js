@@ -26,12 +26,17 @@ function MegamanMobile(megaman){
         if(dY >= MEGAMAN_DY_MAX){
             dY = MEGAMAN_DY_MAX;
         }
+        //console.log(dY);
         dX = megaman.getMove()*MEGAMAN_DX*delta;
     }
 
     function tick(delta){
+        //console.log("megaman.mobile.tick");
+
         megaman.setX( megaman.getX() + dX*delta);
         megaman.setY( megaman.getY() + dY*delta);
+
+
     }
 
     function getNextX(delta){

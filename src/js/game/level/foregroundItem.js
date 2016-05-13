@@ -34,6 +34,7 @@ function ForegroundItem(x,y,w,h,imageName,name){
     }
 
     function canCollide(secondGameitem){
+
         if (secondGameitem.canCollideForegroundItem){
             return secondGameitem.canCollideForegroundItem(item);
         }

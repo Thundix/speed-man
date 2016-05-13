@@ -33,6 +33,8 @@ function initGame() {
     var canvas = new createjs.Stage("megaManCanvas");
     createjs.Sound.alternateExtensions = ["mp3"];
 
+    resizeToWindow();
+
     var manifest = [
         {id:"spriteSheetMegaman",   src:"./../resources/sprites/megaman/megamanSpriteSheet.png"},
         {id:"primaryBg", src:"./../resources/sprites/primaryBg.png"},
@@ -50,9 +52,9 @@ function initGame() {
     multiplexHandler.register(menuHandler);
     multiplexHandler.register(megaman.getInputHandler());
 
-    var collisionEngine = new CollisionEngine();
+    var collisionEngine = new ComposableCollisionEngine();
     var movementEngine = new MovementEngine();
-    var rendererEngine = new RendererEngine();
+    var rendererEngine = new ComposableRendererEngine(canvas,loader);
     var stateEngine = new StateEngine();
     var weaponEngine = new WeaponEngine();
 
@@ -82,16 +84,15 @@ function initGame() {
         // Movement Engine Tick
         movementEngine.tick(event.delta/1000);
 
+        moveCanvas();
+
         // Renderer engine Tick
-        rendererEngine.tick(event.delta/1000);
+        rendererEngine.tick(event);
 
         // Weapon engine Tick
         weaponEngine.tick(event.delta/1000);
 
-        moveCanvas();
 
-        // Tick of game item
-        canvas.update(event);
     }
 
     function startStage() {
@@ -122,6 +123,19 @@ function initGame() {
     }
 
     function restartGame(){
-        location.reload(false);
+        location.reload(false); // todo that's not really the best way
+    }
+
+    function resizeToWindow() {
+        var canvas = document.getElementById("megaManCanvas");
+
+        function resize() {
+            var widthZoom = window.innerWidth / (canvas.width + canvas.width/50);
+            var heightZoom = window.innerHeight / (canvas.height + canvas.height/50);
+            canvas.style.zoom = widthZoom < heightZoom ? widthZoom : heightZoom;
+        }
+
+        window.onresize = resize;
+        resize();
     }
 }

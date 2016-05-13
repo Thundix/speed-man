@@ -4,6 +4,11 @@
     <title>Megaman Test - Vinch - v0.2</title>
 
     <link href="../resources/css/megaman.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="../resources/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../resources/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+1P" rel="stylesheet" type="text/css">
+
     <script type="text/javascript" src="js/game/util/constants.js"></script>
     <script type="text/javascript" src="js/lib/preloadjs-NEXT.min.js"></script>
     <script type="text/javascript" src="js/lib/easeljs-0.7.0.min.js"></script>
@@ -17,6 +22,24 @@
     <script type="text/javascript" src="js/game/engine/stateEngine.js"></script>
     <script type="text/javascript" src="js/game/engine/weaponEngine.js"></script>
     <script type="text/javascript" src="js/game/collision/collision.js"></script>
+
+    <script type="text/javascript" src="../composable/core/composable.js"></script>
+    <script type="text/javascript" src="../composable/core/componentRoleHelper.js"></script>
+    <script type="text/javascript" src="../composable/engines/rendererEngine.js"></script>
+    <script type="text/javascript" src="../composable/engines/collisionEngine.js"></script>
+    <script type="text/javascript" src="../composable/buildingBlocks/locators/locator.js"></script>
+    <script type="text/javascript" src="../composable/buildingBlocks/locators/rectangularZoneLocator.js"></script>
+    <script type="text/javascript" src="../composable/buildingBlocks/locators/mobileLocator.js"></script>
+    <script type="text/javascript" src="../composable/buildingBlocks/locators/offsetLocator.js"></script>
+    <script type="text/javascript" src="../composable/buildingBlocks/colliders/collider.js"></script>
+    <script type="text/javascript" src="../composable/buildingBlocks/colliders/rectangularCollider.js"></script>
+    <script type="text/javascript" src="../composable/buildingBlocks/renderers/renderer.js"></script>
+    <script type="text/javascript" src="../composable/buildingBlocks/renderers/visuals/visual.js"></script>
+    <script type="text/javascript" src="../composable/buildingBlocks/renderers/visuals/bitmapVisual.js"></script>
+    <script type="text/javascript" src="../composable/buildingBlocks/renderers/visuals/spritesheetVisual.js"></script>
+    <script type="text/javascript" src="../composable/buildingBlocks/gameItem.js"></script>
+    <script type="text/javascript" src="../composable/gameItems/platform.js"></script>
+    <script type="text/javascript" src="../composable/gameItems/movingPlatform.js"></script>
 
     <script type="text/javascript" src="js/game/megaman/megaman.renderer.js"></script>
     <script type="text/javascript" src="js/game/megaman/megaman.mobile.js"></script>
@@ -76,6 +99,14 @@
     <h1>MEGA MAN TEST</h1>
 </header>
 
+<span id="keymap">
+    <span>Keymap</span>
+    <table>
+        <tr><td>Move:</td><td>ZQSD</td></tr>
+        <tr><td>Jump:</td><td>Space</td></tr>
+        <tr><td>Fire:</td><td>1</td></tr>
+    </table>
+</span>
 
 <div class="canvasHolder" align="center">
     <canvas id="megaManCanvas" width="1696" height="800"></canvas>

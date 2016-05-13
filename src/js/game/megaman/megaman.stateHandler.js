@@ -15,17 +15,25 @@ function MegamanStateHandler(megaman){
         INIT:{
 
             treatCollision:function (collision){
-                // TODO Treat this stuff correctly
 
-                if(collision.getParams().newY){
-                    megaman.setY(collision.getParams().newY);
-                    megaman.setDy(0);
+                if (collision.getDirection() != Collision.directions.INSIDE){
+
+                    if(collision.getDirection() == Collision.directions.DOWN){
+                        needToFall = false;
+                    }
+                    // TODO Treat this stuff correctly
+//                    console.log(collision);
+                    if(collision.getParams().newY){
+
+                        megaman.setY(collision.getParams().newY);
+                        megaman.setDy(0);
+                    }
+                    if(collision.getParams().newX){
+                        megaman.setX(collision.getParams().newX);
+                        megaman.setDx(0);
+                    }
+                    states.STANDING.enterState();
                 }
-                if(collision.getParams().newX){
-                    megaman.setX(collision.getParams().newX);
-                    megaman.setDx(0);
-                }
-                states.STANDING.enterState();
             },
             name:"INIT"
         },
@@ -55,6 +63,7 @@ function MegamanStateHandler(megaman){
             },
 
             treatCollision:function (collision){
+  //              console.log(collision);
                 if(collision.getDirection() == Collision.directions.DOWN){
                     needToFall = false;
                 }
@@ -70,6 +79,7 @@ function MegamanStateHandler(megaman){
 
             enterState:function (){
                 // TODO Treat this stuff correctly
+             //   console.log("ENTERING STANDING");
                 switchAnimation=true;
                 currentState = states.STANDING;
 
@@ -116,6 +126,7 @@ function MegamanStateHandler(megaman){
 
             enterState:function (){
                 // TODO Treat this stuff correctly
+               // console.log("ENTERING MOVING");
                 switchAnimation=true;
                 currentState = states.MOVING;
 
@@ -162,6 +173,7 @@ function MegamanStateHandler(megaman){
 
             enterState: function () {
                 // TODO Treat this stuff correctly
+               // console.log("ENTERING FALLING");
                 switchAnimation = true;
                 currentState = states.FALLING;
             },
@@ -197,6 +209,7 @@ function MegamanStateHandler(megaman){
 
             enterState:function (){
                 // TODO Treat this stuff correctly
+               // console.log("ENTERING JUMPING");
                 switchAnimation=true;
                 currentState = states.JUMPING;
                 megaman.setDy(-1600)
@@ -235,6 +248,15 @@ function MegamanStateHandler(megaman){
     }
 
     function treatCollisions(){
+        var cornerTopLeft = {
+            borderXType : RectangularZoneLocator.borderXTypes.LEFT,
+            borderYType : RectangularZoneLocator.borderYTypes.TOP
+        };
+
+        //if (megaman.getY(cornerTopLeft)<600){
+        //    console.log("stateHandler.treatCollisisons");
+        //    console.log(collisionQueue);
+        //}
 
         needToFall = true;
         //TODO handle multiple collision at the same time

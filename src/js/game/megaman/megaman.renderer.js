@@ -16,8 +16,20 @@ function MegamanRenderer(megaman){
     megamanRenderer.tick = tick;
 
     var sheetName="spriteSheetMegaman";
-    var animationArray = {init:[1,1],init_down:[2,7,"stand"],stand:[15,15],move:[32,39,'move2'],move2:[40,42,'move'],jump_up:[56,59,"jump_stand"], jump_stand:[59,59,"jump_stand"],
-        jump_down:[59,62,"stand"],fire:[48,55,'fire'],fire_jump:[67,67,"fire_jump"],fire_stand:[16,16,"fire_stand"],hit:[27,28,"hit"]};
+    var animationArray = {
+        init:[1,1],
+        init_down:[2,7,"stand"],
+        stand:[15,15],
+        move:[32,39,'move2'],
+        move2:[40,42,'move'],
+        jump_up:[56,59,"jump_stand"],
+        jump_stand:[59,59,"jump_stand"],
+        jump_down:[59,62,"stand"],
+        fire:[48,55,'fire'],
+        fire_jump:[67,67,"fire_jump"],
+        fire_stand:[16,16,"fire_stand"],
+        hit:[27,28,"hit"]
+    };
     var sprite;
 
     var x=0;
@@ -39,6 +51,7 @@ function MegamanRenderer(megaman){
             return sprite;
     }
     function tick(delta){
+
         sprite.scaleX = (megaman.getMove() != 0 ? megaman.getMove() :  sprite.scaleX);
         sprite.x = x + ((sprite.scaleX) < 0 ? w : 0);
         sprite.y = y;
@@ -85,10 +98,15 @@ function MegamanRenderer(megaman){
 
 
     function setX(newX){
+
         x=newX-20;
     }
 
     function setY(newY){
+        //if (newY<600){
+        //    console.log("megaman.renderer.setY");
+        //    console.log(newY);
+        //}
         y=newY;
     }
 

@@ -38,16 +38,37 @@ function StageContext(loader, canvasG, collisionEngine,movementEngine,rendererEn
         return canvas.canvas.height;
     }
 
-    function addGameItem(gameItem){
+    function addGameItem(gameItem,group){
         if (gameItem.getRenderer) {
             var itemRenderer = gameItem.getRenderer();
             rendererEngine.register(itemRenderer);
-            canvas.addChild(itemRenderer.getGraphicalElement(loader));
+
+        }
+
+        /*quick add to test my new platform*/
+        if (gameItem.getRendererList) {
+            var renderers = gameItem.getRendererList();
+            for(var i=0;i<renderers.length;i++){
+                rendererEngine.register(renderers[i]);
+
+            }
         }
 
         if (gameItem.getCollider) {
+
+
             var collider = gameItem.getCollider();
-            collisionEngine.register(collider);
+            collisionEngine.register(collider,group);
+        }
+
+        /*quick add to test my new platform*/
+        if (gameItem.getColliderList) {
+            var colliders = gameItem.getColliderList();
+            for(var j=0;j<colliders.length;j++){
+
+                collisionEngine.register(colliders[j],group);
+
+            }
         }
 
         if (gameItem.getMobile){
@@ -76,9 +97,29 @@ function StageContext(loader, canvasG, collisionEngine,movementEngine,rendererEn
             canvas.removeChild(itemRenderer.getGraphicalElement(loader));
             rendererEngine.unRegister(itemRenderer);
         }
+
+        /*quick add to test my new platform*/
+        if (gameItem.getRendererList) {
+            var renderers = gameItem.getRendererList();
+            for(var i=0;i<renderers.length;i++){
+                rendererEngine.unRegister(renderers[i]);
+
+            }
+        }
+
+
         if (gameItem.getCollider) {
             var collider = gameItem.getCollider();
             collisionEngine.unRegister(collider);
+        }
+        /*quick add to test my new platform*/
+        if (gameItem.getColliderList) {
+            var colliders = gameItem.getColliderList();
+            for(var j=0;j<colliders.length;j++){
+
+                collisionEngine.ungister(colliders[j]);
+
+            }
         }
 
         if (gameItem.getMobile){
