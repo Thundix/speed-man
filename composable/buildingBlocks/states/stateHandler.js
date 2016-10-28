@@ -42,7 +42,7 @@ function StateHandler(gameItem) {
         function treatInputs(){
             var componentsForRole = componentRoleHelper.getComponentListForRole(StateHandler.ComponentTypes.STATE);
             for(var i=0; i < componentsForRole.length;  i++){
-                componentsForRole[i].treatInputs();
+                componentsForRole[i].treatInputs(gameItem.getInput());
             }
         }
 
