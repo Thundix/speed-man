@@ -5,7 +5,7 @@
 function State() {
     var enabled;
     var active;
-    var  state = this;
+    var state = this;
     state.isEnabled = isEnabled;
     state.setEnabled = setEnabled;
     state.isActive = isActive;
@@ -26,7 +26,4 @@ function State() {
     function setActive(active1){
         active = active1;
     }
-
-
-
 }

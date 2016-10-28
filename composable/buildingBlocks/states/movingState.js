@@ -5,7 +5,7 @@
 MovingState.prototype = new State();
 MovingState.prototype.constructor = MovingState;
 
-function MovingState(){
+function MovingState(gameItem){
 
     State.call(this);
     var state = this;
@@ -20,12 +20,24 @@ function MovingState(){
         return move;
     }
 
-    function treatInputs(){
-
+    function treatInputs(input){
+       move = input.getMove();
+        if( move==0 ){
+            this.setActive(false);
+        }
+        else {
+            this.setActive(true);
+        }
     }
 
-    function treatCollisions() {
+    function treatCollisions(collision) {
 
+        if(collision.getDirection() == Collision.directions.RIGHT || collision.getDirection() == Collision.directions.LEFT) {
+            if (collision.getParams().newX) {
+                gameItem.setX(collision.getParams().newX);
+                gameItem.setDx(0);
+            }
+        }
     }
 
 

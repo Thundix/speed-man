@@ -6,7 +6,7 @@ StateHandler.prototype = new Composable();
 StateHandler.prototype.constructor = StateHandler;
 StateHandler.ComponentTypes = {
     STATE:"State"
-}
+};
 function StateHandler(gameItem) {
     if (gameItem != null){
 
@@ -49,13 +49,15 @@ function StateHandler(gameItem) {
         function treatCollisions() {
             var componentsForRole = componentRoleHelper.getComponentListForRole(StateHandler.ComponentTypes.STATE);
             for(var i=0; i < componentsForRole.length;  i++){
-                componentsForRole[i].treatCollisions(collisionQueue);
+                for(var j=0; j < collisionQueue.length; j++) {
+                    componentsForRole[i].treatCollisions(collisionQueue[j]);
+                }
             }
             // Reinit
             collisionQueue = [];
         }
         function addCollision(collision){
-            collisionQueue[collisionQueue.length] = collision
+            collisionQueue[collisionQueue.length] = collision;
         }
     }
 }
